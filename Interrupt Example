@@ -1,15 +1,11 @@
+/*
+####################
+Interrupt Example
+Programmed on STM32L4 Discovery board.
+Accompanying files with Address information can be found on the STM website
+*/
+
 void LCD_PIN_Init(void){
-// LCD (24 segments, 4 commons, multiplexed 1/4 duty, 1/3 bias) on DIP28 connector
-// VLCD = PC3
-//
-// COM0 = PA8 COM1 = PA9 COM2 = PA10 COM3 = PB9
-//
-// SEG0 = PA7 SEG6 = PD11 SEG12 = PB5 SEG18 = PD8
-// SEG1 = PC5 SEG7 = PD13 SEG13 = PC8 SEG19 = PB14
-// SEG2 = PB1 SEG8 = PD15 SEG14 = PC6 SEG20 = PB12
-// SEG3 = PB13 SEG9 = PC7 SEG15 = PD14 SEG21 = PB0
-// SEG4 = PB15 SEG10 = PA15 SEG16 = PD12 SEG22 = PC4
-// SEG5 = PD9 SEG11 = PB4 SEG17 = PD10 SEG23 = PA6
 RCC->AHB2ENR|=RCC_AHB2ENR_GPIOAEN;
 RCC->AHB2ENR|=RCC_AHB2ENR_GPIOBEN;
 RCC->AHB2ENR|=RCC_AHB2ENR_GPIOCEN;
@@ -113,5 +109,6 @@ time[4] =(seconds%10+'0');//get the least significant second digit
 time[3]=((seconds/10)%10+'0');//get the most significant second digit
 time[2]=(minutes%10+'0');//get the lower minute digit
 time[1]=((minutes/10)%10+'0');//get the most signficant minute digit
-LCD_DisplayString((uint8_t *)time,7);//display all the digits
+LCD_DisplayString((uint8_t *)time,7); //display all the digits.
+//LCD display code was provided by Book
 }
